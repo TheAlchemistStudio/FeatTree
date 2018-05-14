@@ -1,0 +1,11 @@
+<!--
+<app-top-bar></app-top-bar>
+
+<div id="tree-simple"></div>
+-->
+
+<div class="feat-area">
+    <div *ngFor="let feat of feats">
+        <app-feat-card [feat]='feat'></app-feat-card>
+    </div>
+</div>

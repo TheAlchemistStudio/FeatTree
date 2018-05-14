@@ -1,0 +1,41 @@
+.feat {
+    width: auto;
+    height: auto;
+    margin: 20px;
+    padding: 20px;
+    border: 5px solid red;
+    display: none;
+
+    &.selected {
+        color: white;
+        background-color: green;
+        border: 1px solid black;
+        display: block;
+    }
+    
+    &.available {
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+        display: block;
+    }
+    
+    &.unavailable {
+        color: white;
+        background-color: gray;
+        border: 1px solid black;
+        display: block;
+    }
+    
+    &.conflicted {
+        color: white;
+        background-color: lightcoral;
+        border: 1px solid black;
+        display: block;
+    }
+}
+
+.test {
+    color: black;
+    background-color: white;
+}

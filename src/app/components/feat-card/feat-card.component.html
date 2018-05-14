@@ -1,0 +1,10 @@
+<div [ngClass]="{'feat':true, 
+  'selected':feat.selected, 
+  'available':(!feat.selected && feat.status===1), 
+  'unavailable':(!feat.selected && feat.status===2), 
+  'conflicted':(!feat.selected && feat.status===3)}">
+    <pre>{{feat | json}}</pre>
+
+    <button mat-raised-button color="primary" (click)="select()">{{feat.selected ? 'Deselect' : 'Select'}}</button>
+    <a mat-raised-button color="primary" routerLink="/feat/{{feat.id}}">Open</a>
+</div>
