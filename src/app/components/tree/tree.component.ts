@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import Feat from './../../classes/feat';
 
 import { FeatService } from './../../services/feat.service';
+import { Subscription } from 'rxjs';
 
 declare var Treant: any;
 
@@ -90,29 +91,30 @@ export class TreeComponent implements OnInit {
   featArray : Feat[] = [];
   */
 
-  public feats: Feat[];
+  // public feats: Feat[] = [];
+  
+  public feats: Feat[] = [];
 
-  constructor(private featService : FeatService) {
-    /*
-    console.log('called');
-    this.subject = new Subject<any>();
-    console.log('here');
-    this.subject.pipe(debounceTime(300), distinctUntilChanged()).subscribe(value => this.featService.getFeats().subscribe(feats => this.feats = feats));
-    console.log('and here');
-    */
-    // this.feats = this.subject;
+  constructor(private featService: FeatService) {
+    // console.log('tree constructor called');
   }
 
   ngOnInit() {
-    /*
-    (() => {
-      Treant(this.tree_structure)
-    })();
-    */
-   // console.log(this.featData);
-   // this.featService.getFeats().subscribe(feats => this.featArray = feats);
-   // this.feats.pipe(debounceTime(300), distinctUntilChanged(),).subscribe(feats => this.featArray = feats);
-   this.featService.getFeats().subscribe(feats => this.feats = feats);
+    // console.log('tree init called');
+    // this.featService.getFeats().subscribe((feats: Feat[]) => this.feats = feats);
+    this.featService.getFeats().subscribe(feats => this.feats = this.objectToArray(feats));
+    this.featService.ping();
+  }
+
+  objectToArray(obj: any): Feat[] {
+    // console.log('tree objectToArray called');
+    let featArray: Feat[] = [];
+    for (let i in obj) {
+        if (obj.hasOwnProperty(i)) {
+            featArray.push(obj[i]);
+        }
+    }
+    return featArray;
   }
 
 }

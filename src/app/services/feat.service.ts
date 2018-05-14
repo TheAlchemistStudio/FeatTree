@@ -9,54 +9,56 @@ import { Feat } from './../classes/feat';
 @Injectable()
 export class FeatService {
 
-    private feats = {};
+    private feats = {
+        firstFeat: new Feat('firstFeat'),
+        secondFeat: new Feat('secondFeat'),
+        thirdFeat: new Feat('thirdFeat'),
+        fourthFeat: new Feat('fourthFeat'),
+        fifthFeat: new Feat('fifthFeat')
+    }
     private subject = new Subject<any>();
 
     constructor() {
-        let firstFeat = new Feat('first-feat'),
-            secondFeat = new Feat('second-feat'),
-            thirdFeat = new Feat('third-feat'),
-            fourthFeat = new Feat('fourth-feat'),
-            fifthFeat = new Feat('fifth-feat');
+        // console.log('feat service constructor called');
+        this.feats.thirdFeat.requirements = this.feats.firstFeat.id;
+    }
 
-        firstFeat.requirements = thirdFeat.id;
+    public ping(): void {
+        this.subject.next(this.feats);
+    }
 
-        let featArray = [];
-        featArray.push(firstFeat, secondFeat, thirdFeat, fourthFeat, fifthFeat);
-
-        for (let i of featArray) {
-            this.feats[i.id] = i;
-        }
+    private counter = 0;
+    public testMethod(): void {
+        // console.log('feat service testMethod called');
+        let feat = new Feat('test-feat'+this.counter);
+        this.counter = this.counter + 1;
+        this.feats[feat.id] = feat;
+        this.subject.next(this.feats);
     }
 
     public getFeat(id: string): Observable<Feat> {
+        // console.log('feat service getFeat called');
         return Observable.of(this.feats[id]);
     }
 
-    public getFeats(): Observable<Feat[]> {
-        let featArray: Feat[] = [];
+    public getFeats(): Observable<any> {
+        // console.log('feat service getSubjectFeats called');
         for (let i in this.feats) {
             if (this.feats.hasOwnProperty(i)) {
-                // this.evaluateStatus(this.feats[i]);
-                featArray.push(this.feats[i]);
+                // console.log(this.feats[i]);
+                this.evaluateStatus(this.feats[i]);
             }
         }
-        return Observable.of(featArray);
+        return this.subject.asObservable();
     }
 
-    public updateStatus(): void {
-        this.subject.next();
-    }
-
-    public evaluateStatus(feat: Feat): Observable<Feat> {
-        // console.log('called for '+id);
-        // console.log(feat.id);
+    public evaluateStatus(feat: Feat): void {
+        // console.log('feat service evaluateStatus called');
         if(feat.selected) {
             feat.status = Status.Selected;
-            return Observable.of(feat);
+            return;
         }
         let requirements = feat.requirements.split('&&');
-        // console.log(requirements);
         for (let i of requirements) {
             if (i === 'no requirements') {
                 feat.status = Status.Available;
@@ -67,35 +69,11 @@ export class FeatService {
                 break;
             }
             feat.status = Status.Available;
-            /*
-            for(let j of this.feats) {
-                if(i === j.id && j.selected) {
-                    feat.status = Status.Available;
-                } else {
-                    feat.status = Status.Unavailable;
-                }
-            }
-            */
         }
-        return Observable.of(feat);
     }
 
     private isRequirementMet(requirement: string): boolean {
-        // console.log(requirement);
+        // console.log('feat service isRequirementMet called');
         return this.feats[requirement].selected
-
-        /*
-        for (let i in this.feats) {
-            if (this.feats.hasOwnProperty(i)) {
-                // console.log('here is i');
-                // console.log(i);
-                let feat = this.feats[i];
-                if (requirement === feat.id && feat.selected) {
-                    return true;
-                }
-            }
-        }
-        return false;
-        */
     }
 }

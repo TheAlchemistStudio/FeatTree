@@ -14,19 +14,23 @@ export class FeatCardComponent implements OnInit {
   @Input('feat') feat : Feat;
 
   constructor(private featService : FeatService) {
-
+    // console.log('feat-card constructor called');
   }
 
   ngOnInit() {
-    // console.log(this.feat.id);
-    this.feat = this.featService.evaluateStatus(this.feat);
+    // console.log('feat-card init called');
   }
 
   select() : void {
-    // console.log('this click');
-    // this.feat.selected = !this.feat.selected;
-    this.featService.updateStatus();
-    // this.featService.evaluateStatus(this.feat);
+    // console.log('feat-card select called');
+    this.feat.selected = !this.feat.selected;
+    // this.featService.select(this.feat);
+    // this.featService.ping();
+  }
+
+  testMethod(): void {
+    // console.log('feat-card testMethod called');
+    this.featService.testMethod();
   }
 
 }
