@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import Feat from './../../classes/feat';
+import { Feat } from './../../classes/feat';
 
 import { FeatService } from './../../services/feat.service';
-import { Subscription } from 'rxjs';
 
-declare var Treant: any;
+// declare var Treant: any;
 
 @Component({
   selector: 'app-tree',
@@ -86,14 +85,7 @@ export class TreeComponent implements OnInit {
   };
   */
 
-  /*
-  feats : Subject<Feat[]> = new Subject<Feat[]>();
-  featArray : Feat[] = [];
-  */
-
-  // public feats: Feat[] = [];
-  
-  public feats: Feat[] = [];
+  private feats: Feat[] = [];
 
   constructor(private featService: FeatService) {
     // console.log('tree constructor called');
@@ -101,17 +93,14 @@ export class TreeComponent implements OnInit {
 
   ngOnInit() {
     // console.log('tree init called');
-    // this.featService.getFeats().subscribe((feats: Feat[]) => this.feats = feats);
-    this.featService.getFeats().subscribe(feats => this.feats = this.objectToArray(feats));
-    this.featService.ping();
+    this.featService.getFeats().subscribe(feats => this.feats = this.featObjectToArray(feats));
   }
 
-  objectToArray(obj: any): Feat[] {
-    // console.log('tree objectToArray called');
-    let featArray: Feat[] = [];
-    for (let i in obj) {
-        if (obj.hasOwnProperty(i)) {
-            featArray.push(obj[i]);
+  private featObjectToArray(featObject: any): Feat[] {
+    const featArray: Feat[] = [];
+    for (const property in featObject) {
+        if (featObject.hasOwnProperty(property)) {
+            featArray.push(featObject[property]);
         }
     }
     return featArray;

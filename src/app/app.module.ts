@@ -18,7 +18,7 @@ import { FeatService } from './services/feat.service';
     TopBarComponent,
     TreeComponent,
     FeatComponent,
-    FeatCardComponent,
+    FeatCardComponent
   ],
   imports: [
     BrowserModule,

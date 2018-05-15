@@ -11,21 +11,19 @@ import { FeatService } from './../../services/feat.service';
 })
 export class FeatCardComponent implements OnInit {
 
-  @Input('feat') feat : Feat;
+  @Input() feat: Feat;
 
-  constructor(private featService : FeatService) {
+  constructor(private featService: FeatService) {
     // console.log('feat-card constructor called');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('feat-card init called');
   }
 
-  select() : void {
+  select(): void {
     // console.log('feat-card select called');
-    this.feat.selected = !this.feat.selected;
-    // this.featService.select(this.feat);
-    // this.featService.ping();
+    this.featService.select(this.feat);
   }
 
   testMethod(): void {

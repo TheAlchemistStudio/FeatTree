@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Status } from './../classes/status.enum';
 import { Feat } from './../classes/feat';
@@ -15,25 +14,33 @@ export class FeatService {
         thirdFeat: new Feat('thirdFeat'),
         fourthFeat: new Feat('fourthFeat'),
         fifthFeat: new Feat('fifthFeat')
-    }
-    private subject = new Subject<any>();
+    };
+
+    private subject = new BehaviorSubject<any>(this.feats);
+    private counter = 0;
 
     constructor() {
         // console.log('feat service constructor called');
         this.feats.thirdFeat.requirements = this.feats.firstFeat.id;
     }
 
-    public ping(): void {
+    private pushSubject(): void {
+        this.evaluateAllStatus();
         this.subject.next(this.feats);
     }
 
-    private counter = 0;
+    public select(feat: Feat): void {
+        // console.log('feat service select called');
+        this.feats[feat.id].selected = !this.feats[feat.id].selected;
+        this.pushSubject();
+    }
+
     public testMethod(): void {
         // console.log('feat service testMethod called');
-        let feat = new Feat('test-feat'+this.counter);
+        const feat = new Feat('testFeat' + this.counter);
         this.counter = this.counter + 1;
         this.feats[feat.id] = feat;
-        this.subject.next(this.feats);
+        this.pushSubject();
     }
 
     public getFeat(id: string): Observable<Feat> {
@@ -43,23 +50,26 @@ export class FeatService {
 
     public getFeats(): Observable<any> {
         // console.log('feat service getSubjectFeats called');
-        for (let i in this.feats) {
-            if (this.feats.hasOwnProperty(i)) {
-                // console.log(this.feats[i]);
-                this.evaluateStatus(this.feats[i]);
-            }
-        }
+        this.evaluateAllStatus();
         return this.subject.asObservable();
     }
 
-    public evaluateStatus(feat: Feat): void {
+    private evaluateAllStatus(): void {
+        for (const i in this.feats) {
+            if (this.feats.hasOwnProperty(i)) {
+                this.evaluateStatus(this.feats[i]);
+            }
+        }
+    }
+
+    private evaluateStatus(feat: Feat): void {
         // console.log('feat service evaluateStatus called');
-        if(feat.selected) {
+        if (feat.selected) {
             feat.status = Status.Selected;
             return;
         }
-        let requirements = feat.requirements.split('&&');
-        for (let i of requirements) {
+        const requirements = feat.requirements.split('&&');
+        for (const i of requirements) {
             if (i === 'no requirements') {
                 feat.status = Status.Available;
                 break;
@@ -74,6 +84,6 @@ export class FeatService {
 
     private isRequirementMet(requirement: string): boolean {
         // console.log('feat service isRequirementMet called');
-        return this.feats[requirement].selected
+        return this.feats[requirement].selected;
     }
 }
