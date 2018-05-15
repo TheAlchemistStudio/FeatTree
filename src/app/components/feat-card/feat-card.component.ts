@@ -1,8 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { MatDialog } from '@angular/material';
+
 import { Feat } from './../../classes/feat';
 
 import { FeatService } from './../../services/feat.service';
+import { FeatComponent } from '../feat/feat.component';
+import { FeatCardDetailsComponent } from '../feat-card-details/feat-card-details.component';
 
 @Component({
   selector: 'app-feat-card',
@@ -13,22 +17,22 @@ export class FeatCardComponent implements OnInit {
 
   @Input() feat: Feat;
 
-  constructor(private featService: FeatService) {
-    // console.log('feat-card constructor called');
-  }
+  constructor(
+    private featService: FeatService, 
+    private dialog: MatDialog
+  ) {}
 
-  ngOnInit(): void {
-    // console.log('feat-card init called');
-  }
+  ngOnInit(): void {}
 
   select(): void {
-    // console.log('feat-card select called');
     this.featService.select(this.feat);
   }
 
-  testMethod(): void {
-    // console.log('feat-card testMethod called');
-    this.featService.testMethod();
+  details(): void {
+    this.dialog.open(FeatCardDetailsComponent, {
+      width: '60%',
+      data: this.feat
+    });
   }
 
 }

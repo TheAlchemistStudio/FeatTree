@@ -2,7 +2,6 @@
     width: auto;
     height: auto;
     margin: 20px;
-    padding: 20px;
     border: 5px solid red;
     display: none;
 
@@ -29,13 +28,19 @@
     
     &.conflicted {
         color: white;
-        background-color: lightcoral;
+        background-color: lighten(red, 10%);
         border: 1px solid black;
         display: block;
     }
 }
 
-.test {
-    color: black;
-    background-color: white;
+.mat-expansion-panel-header-title {
+    color: inherit;
+    line-height: 2;
+}
+
+.mat-accordion .mat-expansion-panel-spacing:last-child, .mat-accordion .mat-accordion.mat-expansion-panel-spacing:first-child {
+    margin-bottom: inherit;
+    margin-top: inherit;
+    margin: 20px;
 }
