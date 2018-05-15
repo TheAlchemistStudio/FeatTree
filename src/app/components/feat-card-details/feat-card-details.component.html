@@ -1,0 +1,5 @@
+<p>{{feat | json}}</p>
+<hr>
+<button mat-raised-button color="primary" (click)="select()">{{feat.selected ? 'Deselect' : 'Select'}}</button>
+<a mat-raised-button color="primary" routerLink="/feat/{{feat.id}}">Open</a>
+<button mat-raised-button color="primary" (click)="close()">Close</button>

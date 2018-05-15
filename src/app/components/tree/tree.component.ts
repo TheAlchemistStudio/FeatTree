@@ -87,12 +87,11 @@ export class TreeComponent implements OnInit {
 
   private feats: Feat[] = [];
 
-  constructor(private featService: FeatService) {
-    // console.log('tree constructor called');
-  }
+  constructor(
+    private featService: FeatService
+  ) {}
 
   ngOnInit() {
-    // console.log('tree init called');
     this.featService.getFeats().subscribe(feats => this.feats = this.featObjectToArray(feats));
   }
 
