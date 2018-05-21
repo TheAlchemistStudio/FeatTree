@@ -1,46 +1,53 @@
+$outside-margin: 10px;
+$border-radius-size: 5px;
+
 .feat {
-    width: auto;
-    height: auto;
-    margin: 20px;
-    border: 5px solid red;
-    display: none;
+    margin: $outside-margin;
+    padding: $border-radius-size;
+    border: 1px solid black;
+    border-radius: $border-radius-size;
 
     &.selected {
         color: white;
         background-color: green;
-        border: 1px solid black;
-        display: block;
     }
     
     &.available {
         color: black;
         background-color: white;
-        border: 1px solid black;
-        display: block;
     }
     
     &.unavailable {
         color: white;
         background-color: gray;
-        border: 1px solid black;
-        display: block;
     }
     
     &.conflicted {
         color: white;
-        background-color: lighten(red, 10%);
-        border: 1px solid black;
-        display: block;
+        background-color: darken(red, 5%);
+    }
+}
+
+mat-expansion-panel {
+    div {
+        padding: 16px 0;
+
+        &:last-child {
+            padding: 16px 0 0 0;
+        }
+
+        li {
+            padding: 4px 0 0 8px;
+        }
     }
 }
 
 .mat-expansion-panel-header-title {
     color: inherit;
     line-height: 2;
+    font-weight: bolder;
 }
 
 .mat-accordion .mat-expansion-panel-spacing:last-child, .mat-accordion .mat-accordion.mat-expansion-panel-spacing:first-child {
-    margin-bottom: inherit;
-    margin-top: inherit;
-    margin: 20px;
+    margin: $outside-margin;
 }

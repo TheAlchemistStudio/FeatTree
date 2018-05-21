@@ -1,0 +1,18 @@
+.container {
+    width: 70%;
+    margin: 20px auto;
+
+    .upper {
+        text-align: center;
+    
+        .title {
+            margin: 12px 0;
+            line-height: 2;
+            font-weight: bolder;
+        }
+        
+        .sub-title {
+            margin: 6px 12px;
+        }
+    }
+}

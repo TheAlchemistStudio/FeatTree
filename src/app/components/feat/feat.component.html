@@ -1,3 +1,23 @@
-<p>{{feat | json}}</p>
+<div class="container">
+    <div class="upper">
+        <div class="title">
+            {{feat.title}}
+        </div>
+        <div class="sub-title">
+            {{feat.type.join(', ')}}
+        </div>
+        <div class="sub-title">
+            {{feat.subtype.join(', ')}}
+        </div>
+    </div>
+    <hr>
+    <div class="lower">
+        <app-text-information *ngIf="feat.description" [label]='"Description"' [value]='feat.description'></app-text-information>
+        <app-text-information *ngIf="feat.prerequisites" [label]='"Prerequisites"' [value]='feat.prerequisites'></app-text-information>
+        <app-text-information *ngIf="feat.benefit" [label]='"Benefit"' [value]='feat.benefit'></app-text-information>
+        <app-text-information *ngIf="feat.normal" [label]='"Normal"' [value]='feat.normal'></app-text-information>
+        <app-text-information *ngIf="feat.special" [label]='"Special"' [value]='feat.special'></app-text-information>
+    </div>
 
-<button mat-raised-button color="primary" (click)="goBack()">Back</button>
+    <button mat-raised-button color="primary" routerLink="/">Back</button>
+</div>

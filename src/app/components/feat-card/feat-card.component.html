@@ -2,12 +2,12 @@
   <mat-expansion-panel [ngClass]="{'feat':true, 'selected':feat.status===0, 'available':feat.status===1, 'unavailable':feat.status===2, 'conflicted':feat.status===3}">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{feat.title}}
+        <strong>{{feat.title}}</strong>
       </mat-panel-title>
     </mat-expansion-panel-header>
+    <hr *ngIf="feat.prerequisites">
     <div *ngIf="feat.prerequisites">
-      <hr>
-      <p>Prerequisites:</p>
+      <p><strong>Prerequisites:</strong></p>
       <ul>
         <li *ngFor="let prereq of feat.prerequisites.split(',')">
           {{prereq}}
@@ -15,8 +15,10 @@
       </ul>
     </div>
     <hr>
-    <button mat-raised-button color="primary" (click)="select()">{{feat.selected ? 'Deselect' : 'Select'}}</button>
-    <a mat-raised-button color="primary" routerLink="/feat/{{feat.id}}">Open</a>
-    <button mat-raised-button color="primary" (click)="details()">Details</button>
+    <div>
+      <button mat-raised-button color="primary" (click)="select()">{{feat.selected ? 'Deselect' : 'Select'}}</button>
+      <a mat-raised-button color="primary" routerLink="/feat/{{feat.id}}">Open</a>
+      <button mat-raised-button color="primary" (click)="details()">Details</button>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>

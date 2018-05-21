@@ -1,0 +1,23 @@
+.container {
+    margin: 20px 0;
+
+    div {
+        display: flex;
+
+        .label {
+            width: 15%;
+            min-width: 100px;
+            font-weight: bold;
+        }
+    
+        .value {
+            width: 85%;
+            min-width: 100px;
+        }
+    
+        #desc-value {
+            width: 85%;
+            font-style: italic; 
+        }
+    }
+}
