@@ -1,0 +1,10 @@
+<div class="container">
+    <div *ngIf="label=='Description'">
+        <div class="label">{{label}}:</div>
+        <div id="desc-value">{{value}}</div>
+    </div>
+    <div *ngIf="label!='Description'">
+        <div class="label">{{label}}:</div>
+        <div class="value">{{value}}</div>
+    </div>
+</div>

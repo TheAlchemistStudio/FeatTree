@@ -6,6 +6,7 @@ import { FeatCardComponent } from './../feat-card/feat-card.component';
 
 import { FeatService } from './../../services/feat.service';
 
+<<<<<<< HEAD
 declare var Raphael: any;
 
 class Point {
@@ -18,6 +19,8 @@ class Point {
   }
 }
 
+=======
+>>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
@@ -26,6 +29,7 @@ class Point {
 export class TreeComponent implements OnInit {
 
   private feats: Feat[] = [];
+<<<<<<< HEAD
 
   // private holder = document.getElementById("holder");
   @ViewChild("holder", { read: ViewContainerRef }) private holder;
@@ -236,6 +240,15 @@ export class TreeComponent implements OnInit {
 
   goGreen() {
     this.circle.animate(this.toGreen);
+=======
+
+  constructor(
+    private featService: FeatService
+  ) {}
+
+  ngOnInit() {
+    this.featService.getFeats().subscribe(feats => this.feats = this.featObjectToArray(feats));
+>>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
   }
 
   goBlue() {

@@ -5,12 +5,17 @@
     .upper {
         text-align: center;
     
+<<<<<<< HEAD
         .label {
+=======
+        .title {
+>>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
             margin: 12px 0;
             line-height: 2;
             font-weight: bolder;
         }
         
+<<<<<<< HEAD
         .sub-label {
             margin: 6px 12px;
         }
@@ -34,4 +39,10 @@
             }
         }
     }
+=======
+        .sub-title {
+            margin: 6px 12px;
+        }
+    }
+>>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
 }

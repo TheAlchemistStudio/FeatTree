@@ -15,9 +15,15 @@ export class TopBarComponent implements OnInit {
 
   ngOnInit() {}
 
+<<<<<<< HEAD
   private test(): void {
     // console.log('top bar testMethod called');
     this.featService.test();
+=======
+  private addNewFeat(): void {
+    // console.log('top bar testMethod called');
+    // this.featService.addNewFeat();
+>>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
   }
 
 }
