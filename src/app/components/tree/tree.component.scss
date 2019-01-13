@@ -1,3 +1,14 @@
+#holder {
+    width: 95%;
+    height: 80vh;
+    border: 1px solid lightgray;
+    margin: 5vh auto 5vh;
+    background-color: white;
+    overflow: auto;
+    display: flex;
+}
+
+/*
 .feat-area {
     width: auto;
     height: auto;
@@ -6,3 +17,4 @@
     display: flex;
     flex-wrap: wrap;
 }
+*/

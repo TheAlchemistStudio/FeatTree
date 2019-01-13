@@ -1,8 +1,6 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-// Import other styles for tree if necessary
-
-// Remove tree styles below
+$font-stack: Arial, Helvetica, sans-serif;
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, 
@@ -14,7 +12,7 @@ output, ruby, section, summary, time, mark, audio, video {
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
+    font-family: $font-stack;
     vertical-align: baseline;
 }
 
@@ -24,6 +22,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
     line-height: 1;
+    // background-color: black;
 }
 
 ol, ul {
@@ -43,28 +42,6 @@ table {
     border-spacing: 0;
 }
 
-/*
-.Treant {
-    .node {
-        margin: auto;
-        border: 1px solid black;
-
-        p {
-            background: none;
-        }
-
-        &.collapsed {
-            background-color: cornflowerblue;
-        }
-
-        .collapse-switch {
-            top: -30px;
-            width: 20px;
-            height: 20px;
-            left: 50%;
-            margin-left: -10px;
-            background: white;
-        }
-    }
+app-feat-card {
+    height: fit-content;
 }
-*/

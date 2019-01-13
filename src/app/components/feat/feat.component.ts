@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Feat } from './../../classes/feat';
 
@@ -17,23 +16,14 @@ export class FeatComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
-    private location : Location,
+    private router : Router,
     private featService : FeatService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
-    this.getFeat();
-  }
-
-  private getFeat() : void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.featService.getFeat(id).subscribe(feat => this.feat = feat);
-  }
-
-  private goBack() : void {
-    this.location.back();
+    this.featService.getFeat(id)
+      .subscribe(feat => this.feat = feat, () => this.router.navigate(['/']));
   }
 
 }

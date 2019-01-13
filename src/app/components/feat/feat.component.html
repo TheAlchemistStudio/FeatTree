@@ -1,3 +1,38 @@
-<p>{{feat | json}}</p>
+<div class="container">
+    <div class="upper" *ngIf="feat">
+        <div class="label">
+            {{feat.label}}
+        </div>
+        <div class="sub-label">
+            {{feat.type.join(', ')}}
+        </div>
+        <div class="sub-label">
+            {{feat.subtype.join(', ')}}
+        </div>
+    </div>
+    <hr>
+    <div class="lower" *ngIf="feat">
+        <div *ngIf="feat.description">
+            <label>Description</label>
+            <div style="font-style:italic;">{{feat.description}}</div>
+        </div>
+        <div *ngIf="feat.prerequisites">
+            <label>Prerequisites</label>
+            <div>{{feat.prerequisites}}</div>
+        </div>
+        <div *ngIf="feat.benefit">
+            <label>Benefit</label>
+            <div>{{feat.benefit}}</div>
+        </div>
+        <div *ngIf="feat.normal">
+            <label>Normal</label>
+            <div>{{feat.normal}}</div>
+        </div>
+        <div *ngIf="feat.special">
+            <label>Special</label>
+            <div>{{feat.special}}</div>
+        </div>
+    </div>
 
-<button mat-raised-button color="primary" (click)="goBack()">Back</button>
+    <button mat-raised-button color="primary" routerLink="/">Back</button>
+</div>
