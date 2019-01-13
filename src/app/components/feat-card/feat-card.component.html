@@ -2,11 +2,7 @@
   <mat-expansion-panel [ngClass]="{'feat':true, 'selected':feat.status===0, 'available':feat.status===1, 'unavailable':feat.status===2, 'conflicted':feat.status===3}">
     <mat-expansion-panel-header>
       <mat-panel-title>
-<<<<<<< HEAD
         <strong>{{feat.label}}</strong>
-=======
-        <strong>{{feat.title}}</strong>
->>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
       </mat-panel-title>
     </mat-expansion-panel-header>
     <hr *ngIf="feat.prerequisites">

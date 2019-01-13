@@ -1,6 +1,5 @@
 <div class="container">
     <div class="upper">
-<<<<<<< HEAD
         <div class="label">
             {{feat.label}}
         </div>
@@ -8,21 +7,11 @@
             {{feat.type.join(', ')}}
         </div>
         <div class="sub-label">
-=======
-        <div class="title">
-            {{feat.title}}
-        </div>
-        <div class="sub-title">
-            {{feat.type.join(', ')}}
-        </div>
-        <div class="sub-title">
->>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
             {{feat.subtype.join(', ')}}
         </div>
     </div>
     <hr>
     <div class="lower">
-<<<<<<< HEAD
             <div *ngIf="feat.description">
                 <label>Description</label>
                 <div style="font-style:italic;">{{feat.description}}</div>
@@ -43,13 +32,6 @@
                 <label>Special</label>
                 <div>{{feat.special}}</div>
             </div>
-=======
-        <app-text-information *ngIf="feat.description" [label]='"Description"' [value]='feat.description'></app-text-information>
-        <app-text-information *ngIf="feat.prerequisites" [label]='"Prerequisites"' [value]='feat.prerequisites'></app-text-information>
-        <app-text-information *ngIf="feat.benefit" [label]='"Benefit"' [value]='feat.benefit'></app-text-information>
-        <app-text-information *ngIf="feat.normal" [label]='"Normal"' [value]='feat.normal'></app-text-information>
-        <app-text-information *ngIf="feat.special" [label]='"Special"' [value]='feat.special'></app-text-information>
->>>>>>> b2ca3970296d89954a16ba702b9e9fbbac0e3d55
     </div>
 
     <hr>
