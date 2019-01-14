@@ -25,7 +25,6 @@ export class Feat {
     }
 
     set(object: any): Feat {
-        this.title = object.title || this.title;
         this.description = object.description || this.description;
         this.prerequisites = object.prerequisites || this.prerequisites;
         this.benefit = object.benefit || this.benefit;
