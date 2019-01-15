@@ -12,6 +12,7 @@ import { TreeComponent } from './components/tree/tree.component';
 import { FeatComponent } from './components/feat/feat.component';
 import { FeatCardComponent } from './components/feat-card/feat-card.component';
 import { FeatCardDetailsComponent } from './components/feat-card-details/feat-card-details.component';
+import { WorkbenchComponent } from './components/workbench/workbench.component';
 
 import { FeatService } from './services/feat.service';
 
@@ -22,7 +23,8 @@ import { FeatService } from './services/feat.service';
     TreeComponent,
     FeatComponent,
     FeatCardComponent,
-    FeatCardDetailsComponent
+    FeatCardDetailsComponent,
+    WorkbenchComponent
   ],
   imports: [
     BrowserModule,
