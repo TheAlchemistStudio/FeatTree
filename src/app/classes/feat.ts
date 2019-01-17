@@ -1,6 +1,7 @@
 import Status from './status.enum';
+import { IEvaluableFeat } from './IEvaluableFeat';
 
-export class Feat {
+export class Feat implements IEvaluableFeat {
 
     private _id: string;
 
@@ -36,6 +37,18 @@ export class Feat {
         this.selected = object.selected || this.selected;
         this.status = object.status || this.status;
         return this;
+    }
+    
+    isAvailable(): boolean {
+        return this.status === Status.Available;
+    }
+
+    isConflicted(): boolean {
+        return this.status === Status.Conflicted;
+    }
+
+    reduceToString(): string {
+        return this._id;
     }
     
 }
