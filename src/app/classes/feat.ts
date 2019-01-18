@@ -1,5 +1,5 @@
 import Status from './status.enum';
-import { IEvaluableFeat } from './IEvaluableFeat';
+import { IEvaluableFeat } from './i-evaluable-feat';
 
 export class Feat implements IEvaluableFeat {
 

@@ -1,4 +1,4 @@
-import { IEvaluableFeat } from './IEvaluableFeat';
+import { IEvaluableFeat } from './i-evaluable-feat';
 
 export class OrFeat implements IEvaluableFeat {
 
