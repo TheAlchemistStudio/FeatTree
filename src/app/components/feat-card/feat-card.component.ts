@@ -4,8 +4,6 @@ import { MatDialog } from '@angular/material';
 
 import { Feat } from './../../classes/feat';
 
-import { FeatService } from './../../services/feat.service';
-import { FeatComponent } from '../feat/feat.component';
 import { FeatCardDetailsComponent } from '../feat-card-details/feat-card-details.component';
 
 @Component({
@@ -18,14 +16,13 @@ export class FeatCardComponent implements OnInit {
   @Input() feat: Feat;
 
   constructor(
-    private featService: FeatService, 
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
 
   select(): void {
-    this.featService.select(this.feat);
+    this.feat.select();
   }
 
   details(): void {

@@ -15,7 +15,6 @@ export class TreeComponent implements OnInit {
 
   private feats: Feat[] = [];
 
-  // private holder = document.getElementById("holder");
   @ViewChild("holder", { read: ViewContainerRef }) private holder;
   componentRef: ComponentRef<FeatCardComponent>;
 
@@ -28,7 +27,9 @@ export class TreeComponent implements OnInit {
     this.featService.getFeats()
       .subscribe(
         feats => {
-          this.feats = feats;
+          feats.forEach(feat => {
+            this.feats.push(new Feat(feat.id).set(feat));
+          });
         }, (err) => {
           console.error(err);
         }, () => {

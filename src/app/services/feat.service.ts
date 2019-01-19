@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Feat } from './../classes/feat';
+import { ServerResponse } from '../classes/server-response';
 
 @Injectable()
 export class FeatService {
@@ -17,15 +18,11 @@ export class FeatService {
         return this.http.get<Feat>(`${this.server}/feats/${id}/`);
     }
 
-    public getFeats(): Observable<any> {
-        return this.http.get<any>(`${this.server}/feats/`)
+    public getFeats(): Observable<Feat[]> {
+        return this.http.get<ServerResponse<Feat[]>>(`${this.server}/feats/`)
             .pipe(
                 map(feats => feats.results)
             );
-    }
-
-    public select(feat: Feat): void {
-
     }
 
     public test(): void {

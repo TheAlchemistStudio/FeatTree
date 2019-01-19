@@ -3,7 +3,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Feat } from '../../classes/feat';
-import { FeatService } from '../../services/feat.service';
 
 @Component({
   selector: 'app-feat-card-details',
@@ -15,7 +14,6 @@ export class FeatCardDetailsComponent implements OnInit {
   private feat: Feat;
 
   constructor(
-    private featService: FeatService, 
     private dialogRef: MatDialogRef<FeatCardDetailsComponent>, 
     @Inject(MAT_DIALOG_DATA) private data: Feat
   ) {}
@@ -25,7 +23,7 @@ export class FeatCardDetailsComponent implements OnInit {
   }
 
   select(): void {
-    this.featService.select(this.feat);
+    this.feat.select();
   }
 
   close(): void {
